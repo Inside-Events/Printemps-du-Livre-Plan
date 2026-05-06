@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Plan Festival</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      overflow: hidden;
+      width: 90%;
+      height: 90%;
+      border: 2px solid white;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      cursor: grab;
+      transition: transform 0.2s;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img id="map" src="plan.png" alt="Plan">
+</div>
+
+<script>
+let scale = 1;
+const img = document.getElementById("map");
+
+img.addEventListener("wheel", function(e) {
+  e.preventDefault();
+  scale += e.deltaY * -0.001;
+  scale = Math.min(Math.max(.5, scale), 5);
+  img.style.transform = "scale(" + scale + ")";
+});
+</script>
+
+</body>
+</html>
